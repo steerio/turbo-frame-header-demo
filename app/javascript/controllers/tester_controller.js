@@ -6,17 +6,12 @@ export default class extends Controller {
     frame: String
   };
 
-  connect() {
-    console.log("Connected", this.element);
-  }
-
   open(e) {
     e.preventDefault();
 
     const a = e.currentTarget;
     if (!a.href) return;
     const frame = document.getElementById(this.frameValue);
-    console.log("YOO HOO", frame, e.currentTarget);
     if (!frame) return;
 
     if (frame.src == a.href) {
