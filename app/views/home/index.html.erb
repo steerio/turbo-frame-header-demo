@@ -1,0 +1,33 @@
+<h1>Hello there!</h1>
+
+<div class="frame">
+  <%= turbo_frame_tag 'testing' do %>
+    <p>I am the index page. It's <%= Time.now %> now.</p>
+  <% end %>
+</div>
+
+<div data-controller="tester" data-tester-frame-value="testing">
+  <ul>
+    <li>
+      Clicking the link below sets the <code>src</code> property of the
+      Turbo Frame with ID <code>testing</code> to <code>"/other"</code>.
+    </li>
+    <li>
+      This should make a request to <code>/other</code> with the
+      header <code>Turbo-Frame: testing</code>.
+    </li>
+    <li>
+      The other page contains a Turbo Frame, too. If the <code>Turbo-Frame</code>
+      header is set, it will be used for its ID. Otherwise it's set to something
+      irrelevant.
+    </li>
+    <li>
+      So if the header was properly set for the request, we'll see the frame update,
+      otherwise we'll get a <strong>Content missing</strong> message.
+    </li>
+  </ul>
+
+  <p>
+    <a href="/other" data-action="tester#open">Go load that frame</a>
+  </p>
+</div>
